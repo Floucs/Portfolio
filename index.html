@@ -24,6 +24,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
+  <!-- Set language from localStorage before render to avoid flash -->
+  <script>var _l=localStorage.getItem('floucs-lang');if(_l)document.documentElement.lang=_l;</script>
+
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -50,6 +53,10 @@
       line-height: 1.6;
       background: var(--white);
     }
+
+    /* Language toggle */
+    html[lang="en"] [data-lang="de"] { display: none !important; }
+    html[lang="de"] [data-lang="en"] { display: none !important; }
 
     /* ── NAV ─────────────────────────────────────────── */
     nav {
@@ -79,6 +86,7 @@
       display: flex;
       gap: 2rem;
       list-style: none;
+      align-items: center;
     }
 
     .nav-links a {
@@ -90,6 +98,34 @@
     }
 
     .nav-links a:hover { color: var(--white); }
+
+    .lang-toggle {
+      display: flex;
+      align-items: center;
+      gap: 0.15rem;
+    }
+
+    .lang-btn {
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 0.8125rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      color: var(--gray-400);
+      padding: 0.15rem 0.25rem;
+      transition: color 0.2s;
+      font-family: var(--font);
+    }
+
+    .lang-btn:hover { color: var(--white); }
+    .lang-btn.active { color: var(--teal-lt); }
+
+    .lang-sep {
+      color: var(--gray-600);
+      font-size: 0.75rem;
+      user-select: none;
+    }
 
     /* ── HERO ────────────────────────────────────────── */
     .hero {
@@ -322,7 +358,7 @@
 
     .skills-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+      grid-template-columns: repeat(3, 1fr);
       gap: 1.25rem;
       margin-top: 3rem;
     }
@@ -406,6 +442,10 @@
     footer p { font-size: 0.8125rem; color: var(--gray-400); }
 
     /* ── RESPONSIVE ──────────────────────────────────── */
+    @media (max-width: 768px) {
+      .skills-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
     @media (max-width: 640px) {
       nav { padding: 0 1rem; }
       .nav-links { gap: 1.25rem; }
@@ -413,6 +453,10 @@
       section { padding: 4rem 1rem; }
       .about-grid { grid-template-columns: 1fr; }
       footer { padding: 1.25rem 1rem; }
+    }
+
+    @media (max-width: 480px) {
+      .skills-grid { grid-template-columns: 1fr; }
     }
 
     @media (max-width: 420px) {
@@ -427,27 +471,48 @@
   <a href="#" class="nav-logo">Florian Schorb <span>·</span></a>
   <ul class="nav-links">
     <li><a href="#about">About</a></li>
-    <li><a href="#projects">Projekte</a></li>
+    <li><a href="#projects"><span data-lang="de">Projekte</span><span data-lang="en">Projects</span></a></li>
     <li><a href="#skills">Skills</a></li>
-    <li><a href="#contact">Kontakt</a></li>
+    <li><a href="#contact"><span data-lang="de">Kontakt</span><span data-lang="en">Contact</span></a></li>
+    <li>
+      <div class="lang-toggle">
+        <button class="lang-btn" id="btn-de" onclick="setLang('de')">DE</button>
+        <span class="lang-sep">|</span>
+        <button class="lang-btn" id="btn-en" onclick="setLang('en')">EN</button>
+      </div>
+    </li>
   </ul>
 </nav>
 
 <!-- HERO -->
 <section class="hero">
   <div class="hero-inner">
-    <span class="hero-tag">IT Product Management · Digital Business &amp; Management · AI-Fokussiert</span>
+    <span class="hero-tag">
+      <span data-lang="de">IT PRODUCT MANAGEMENT · DIGITAL BUSINESS &amp; MANAGEMENT · AI-FOKUSSIERT</span>
+      <span data-lang="en">IT PRODUCT MANAGEMENT · DIGITAL BUSINESS &amp; MANAGEMENT · AI-FOCUSED</span>
+    </span>
     <h1>Florian Schorb<br><span>AI meets Organization.</span></h1>
-    <p class="hero-tagline">
+    <p class="hero-tagline" data-lang="de">
       Master-Student mit Fokus auf Artificial Intelligence<br>
       und ihre praktische Anwendung in Unternehmen.
     </p>
-    <p class="hero-pitch">
+    <p class="hero-tagline" data-lang="en">
+      Master's student focused on Artificial Intelligence<br>
+      and its practical application in organizations.
+    </p>
+    <p class="hero-pitch" data-lang="de">
       Ich verbringe meine Zeit damit, neue AI-Tools auszuprobieren, lokale Setups zu bauen und zu verstehen, wie sich generative KI in echte Arbeitsabläufe integrieren lässt — nicht nur als Demo, sondern als Lösung mit Substanz. Parallel sammle ich erste Praxiserfahrung in einer SAP-Migration im Bereich Change Management.
     </p>
+    <p class="hero-pitch" data-lang="en">
+      I spend my time exploring new AI tools, building local setups, and understanding how generative AI can be integrated into real workflows — not just as demos, but as solutions with substance. In parallel, I'm gaining hands-on experience in a SAP migration project in change management.
+    </p>
     <div class="hero-actions">
-      <a href="#projects" class="btn btn-primary">Projekte ansehen</a>
-      <a href="#contact" class="btn btn-outline">Kontakt aufnehmen</a>
+      <a href="#projects" class="btn btn-primary">
+        <span data-lang="de">Projekte ansehen</span><span data-lang="en">View Projects</span>
+      </a>
+      <a href="#contact" class="btn btn-outline">
+        <span data-lang="de">Kontakt aufnehmen</span><span data-lang="en">Get in Touch</span>
+      </a>
     </div>
   </div>
 </section>
@@ -455,32 +520,51 @@
 <!-- ABOUT -->
 <section class="about" id="about">
   <div class="section-inner">
-    <span class="section-label">Über mich</span>
-    <h2 class="section-title">Fokus AI.</h2>
-    <p class="section-subtitle">
+    <span class="section-label">
+      <span data-lang="de">Über mich</span><span data-lang="en">About me</span>
+    </span>
+    <h2 class="section-title">
+      <span data-lang="de">Fokus AI.</span><span data-lang="en">Focus AI.</span>
+    </h2>
+    <p class="section-subtitle" data-lang="de">
       Master-Student im Bereich IT Product Management &amp; Digital Business and Management an der HS Albstadt-Sigmaringen. Mein Schwerpunkt liegt klar auf Artificial Intelligence — vor allem dort, wo AI nicht nur als Buzzword auftaucht, sondern echten Mehrwert schafft.
+    </p>
+    <p class="section-subtitle" data-lang="en">
+      Master's student in IT Product Management &amp; Digital Business and Management at HS Albstadt-Sigmaringen. My focus is clearly on Artificial Intelligence — especially where AI isn't just a buzzword, but creates real value.
     </p>
 
     <div class="about-grid">
       <div class="about-card">
         <div class="about-card-icon">🎓</div>
-        <h3>Akademischer Hintergrund</h3>
-        <p>M.Sc. IT Product Management + Digital Business &amp; Management an der Hochschule Albstadt-Sigmaringen. Davor: B.Sc. IT-Produktmanagement an der Hochschule Furtwangen (HFU), Schwerpunkt Sozioinformatik.</p>
+        <h3>
+          <span data-lang="de">Akademischer Hintergrund</span><span data-lang="en">Academic Background</span>
+        </h3>
+        <p data-lang="de">M.Sc. IT Product Management + Digital Business &amp; Management an der Hochschule Albstadt-Sigmaringen. Davor: B.Sc. IT-Produktmanagement an der Hochschule Furtwangen (HFU), Schwerpunkt Sozioinformatik.</p>
+        <p data-lang="en">M.Sc. IT Product Management + Digital Business &amp; Management at Hochschule Albstadt-Sigmaringen. Previously: B.Sc. IT-Produktmanagement at Hochschule Furtwangen (HFU), focus: Socio-Informatics.</p>
       </div>
       <div class="about-card">
         <div class="about-card-icon">🤖</div>
-        <h3>AI-Fokus</h3>
-        <p>Ich bin ultra-fokussiert auf das Thema AI. Ich teste neue Modelle, baue eigene Pipelines, experimentiere mit lokalen LLMs und versuche jeden Tag, näher dran zu sein an dem, was wirklich funktioniert. Wer jetzt früh dranbleibt, kann wirklich etwas bewegen.</p>
+        <h3>
+          <span data-lang="de">AI-Fokus</span><span data-lang="en">AI Focus</span>
+        </h3>
+        <p data-lang="de">Ich bin ultra-fokussiert auf das Thema AI. Ich teste neue Modelle, baue eigene Pipelines, experimentiere mit lokalen LLMs und versuche jeden Tag, näher dran zu sein an dem, was wirklich funktioniert. Wer jetzt früh dranbleibt, kann wirklich etwas bewegen.</p>
+        <p data-lang="en">I'm fully focused on AI. I test new models, build my own pipelines, experiment with local LLMs, and try every day to get closer to what actually works. Those who stay close to this technology now can really make an impact.</p>
       </div>
       <div class="about-card">
         <div class="about-card-icon">🖥️</div>
-        <h3>Local AI &amp; Infrastruktur</h3>
-        <p>Self-hosted AI-Setups in der eigenen Infrastruktur: Lokale LLMs via Ollama, Paperless-ngx mit AI-gestützter Dokumentenklassifizierung. Schwerpunkt auf Lösungen, die ohne Cloud-Abhängigkeit funktionieren und sich in eigene Workflows einbinden lassen.</p>
+        <h3>
+          <span data-lang="de">Local AI &amp; Infrastruktur</span><span data-lang="en">Local AI &amp; Infrastructure</span>
+        </h3>
+        <p data-lang="de">Self-hosted AI-Setups in der eigenen Infrastruktur: Lokale LLMs via Ollama, Paperless-ngx mit AI-gestützter Dokumentenklassifizierung. Schwerpunkt auf Lösungen, die ohne Cloud-Abhängigkeit funktionieren und sich in eigene Workflows einbinden lassen.</p>
+        <p data-lang="en">Self-hosted AI setups in my own infrastructure: local LLMs via Ollama, Paperless-ngx with AI-supported document classification. Focus on solutions that work independently of cloud services and integrate into custom workflows.</p>
       </div>
       <div class="about-card">
         <div class="about-card-icon">🏢</div>
-        <h3>Praxis: SAP-Migration</h3>
-        <p>Parallel zum Studium sammle ich Erfahrung in einem laufenden SAP-Migrationsprojekt (S/3 → S/4HANA) im Bereich Change Management. Ich bin kein Change-Management-Profi, aber die Praxis hilft mir, Theorie und reale Unternehmensabläufe direkt zu verbinden.</p>
+        <h3>
+          <span data-lang="de">Praxis: SAP-Migration</span><span data-lang="en">Practice: SAP Migration</span>
+        </h3>
+        <p data-lang="de">Parallel zum Studium sammle ich Erfahrung in einem laufenden SAP-Migrationsprojekt (S/3 → S/4HANA) im Bereich Change Management. Ich bin kein Change-Management-Profi, aber die Praxis hilft mir, Theorie und reale Unternehmensabläufe direkt zu verbinden.</p>
+        <p data-lang="en">Alongside my studies, I'm gaining hands-on experience in an ongoing SAP migration project (S/3 → S/4HANA) in the area of change management. I'm not a change management expert, but the practical exposure helps me directly connect theory with real organizational workflows.</p>
       </div>
     </div>
   </div>
@@ -489,16 +573,24 @@
 <!-- PROJECTS -->
 <section class="projects" id="projects">
   <div class="section-inner">
-    <span class="section-label">Projekte</span>
-    <h2 class="section-title">Ausgewählte Arbeiten.</h2>
-    <p class="section-subtitle">Von lokaler AI-Infrastruktur bis zu Knowledge-Management-Pipelines — alle Projekte entstehen aus echtem Interesse und praktischer Anwendung.</p>
+    <span class="section-label">
+      <span data-lang="de">Projekte</span><span data-lang="en">Projects</span>
+    </span>
+    <h2 class="section-title">
+      <span data-lang="de">Ausgewählte Arbeiten.</span><span data-lang="en">Selected Work.</span>
+    </h2>
+    <p class="section-subtitle" data-lang="de">Von lokaler AI-Infrastruktur bis zu Knowledge-Management-Pipelines — alle Projekte entstehen aus echtem Interesse und praktischer Anwendung.</p>
+    <p class="section-subtitle" data-lang="en">From local AI infrastructure to knowledge management pipelines — all projects emerge from genuine interest and practical application.</p>
 
     <div class="projects-grid">
 
       <div class="project-card">
-        <span class="project-status status-active">Aktiv in Entwicklung</span>
+        <span class="project-status status-active">
+          <span data-lang="de">Aktiv in Entwicklung</span><span data-lang="en">Actively in Development</span>
+        </span>
         <h3>NotebookLM – Obsidian Learning Pipeline</h3>
-        <p>Multi-phasiges, AI-gestütztes persönliches Lernsystem. Verknüpft NotebookLM-Analysen mit strukturierten Obsidian-Notizen via Python und Dataview für kontinuierliches Wissensmanagement.</p>
+        <p data-lang="de">Multi-phasiges, AI-gestütztes persönliches Lernsystem. Verknüpft NotebookLM-Analysen mit strukturierten Obsidian-Notizen via Python und Dataview für kontinuierliches Wissensmanagement.</p>
+        <p data-lang="en">Multi-phase, AI-supported personal learning system. Connects NotebookLM analyses with structured Obsidian notes via Python and Dataview for continuous knowledge management.</p>
         <div class="project-meta">
           <div class="tech-tags">
             <span class="tag">Python</span>
@@ -514,9 +606,14 @@
       </div>
 
       <div class="project-card">
-        <span class="project-status status-local">Lokal &amp; Self-Hosted</span>
-        <h3>Local AI Dokumentenklassifizierung</h3>
-        <p>Vollständig lokale Dokumentenverarbeitung mit Paperless-ngx und Paperless-AI. Klassifizierung auf Deutsch und Englisch über ein lokal laufendes Open-Source Language Model (Qwen) — ohne Cloud, ohne Datenweitergabe.</p>
+        <span class="project-status status-local">
+          <span data-lang="de">Lokal &amp; Self-Hosted</span><span data-lang="en">Local &amp; Self-Hosted</span>
+        </span>
+        <h3>
+          <span data-lang="de">Local AI Dokumentenklassifizierung</span><span data-lang="en">Local AI Document Classification</span>
+        </h3>
+        <p data-lang="de">Vollständig lokale Dokumentenverarbeitung mit Paperless-ngx und Paperless-AI. Klassifizierung auf Deutsch und Englisch über ein lokal laufendes Open-Source Language Model (Qwen) — ohne Cloud, ohne Datenweitergabe.</p>
+        <p data-lang="en">Fully local document processing with Paperless-ngx and Paperless-AI. Classification in German and English via a locally running open-source language model (Qwen) — no cloud, no data sharing.</p>
         <div class="project-meta">
           <div class="tech-tags">
             <span class="tag">Paperless-ngx</span>
@@ -526,15 +623,19 @@
             <span class="tag">Self-hosted</span>
           </div>
           <div class="project-links">
-            <span class="project-link muted">Case Study folgt</span>
+            <span class="project-link muted" data-lang="de">Case Study folgt</span>
+            <span class="project-link muted" data-lang="en">Case Study coming soon</span>
           </div>
         </div>
       </div>
 
       <div class="project-card">
-        <span class="project-status status-concept">In Konzeption</span>
+        <span class="project-status status-concept">
+          <span data-lang="de">In Konzeption</span><span data-lang="en">In Concept</span>
+        </span>
         <h3>SAP + AI Bridge</h3>
-        <p>Konzeptphase: Workflows, die Change Management in SAP-Migrationen über Open-Source Language Models und Claude unterstützen können. Geplante Bausteine: Kommunikations-Generator, Schulungskonzept-Builder, Delta-Dokumentation.</p>
+        <p data-lang="de">Konzeptphase: Workflows, die Change Management in SAP-Migrationen über Open-Source Language Models und Claude unterstützen können. Geplante Bausteine: Kommunikations-Generator, Schulungskonzept-Builder, Delta-Dokumentation.</p>
+        <p data-lang="en">Concept phase: workflows that support change management in SAP migrations through open-source language models and Claude. Planned modules: communication generator, training concept builder, delta documentation.</p>
         <div class="project-meta">
           <div class="tech-tags">
             <span class="tag">Claude API</span>
@@ -543,15 +644,19 @@
             <span class="tag">Change Mgmt</span>
           </div>
           <div class="project-links">
-            <span class="project-link muted">Konzeptphase</span>
+            <span class="project-link muted" data-lang="de">Konzeptphase</span>
+            <span class="project-link muted" data-lang="en">Concept phase</span>
           </div>
         </div>
       </div>
 
       <div class="project-card">
-        <span class="project-status status-live">Live &amp; Im Einsatz</span>
+        <span class="project-status status-live">
+          <span data-lang="de">Live &amp; Im Einsatz</span><span data-lang="en">Live &amp; In Use</span>
+        </span>
         <h3>Change Management Prompt Library</h3>
-        <p>Eigenständig konzipierte, browserbasierte Prompt-Bibliothek für Change Management in Großprojekten. Strukturiert über 25+ kuratierte Prompts in Kategorien wie Communication, Stakeholder Engagement, Training, Assessment und Coaching — direkt nutzbar für Change Manager im Tagesgeschäft. Komplett vendor-neutral, lokal lauffähig, ohne Backend.</p>
+        <p data-lang="de">Eigenständig konzipierte, browserbasierte Prompt-Bibliothek für Change Management in Großprojekten. Strukturiert über 25+ kuratierte Prompts in Kategorien wie Communication, Stakeholder Engagement, Training, Assessment und Coaching — direkt nutzbar für Change Manager im Tagesgeschäft. Komplett vendor-neutral, lokal lauffähig, ohne Backend.</p>
+        <p data-lang="en">Self-designed, browser-based prompt library for change management in large-scale projects. Structured with 25+ curated prompts across categories such as communication, stakeholder engagement, training, assessment, and coaching — ready to use for change managers in daily work. Fully vendor-neutral, runs locally, no backend required.</p>
         <div class="project-meta">
           <div class="tech-tags">
             <span class="tag">HTML/CSS/JS</span>
@@ -560,7 +665,8 @@
             <span class="tag">LocalStorage</span>
           </div>
           <div class="project-links">
-            <span class="project-link muted">Im produktiven Einsatz</span>
+            <span class="project-link muted" data-lang="de">Im produktiven Einsatz</span>
+            <span class="project-link muted" data-lang="en">In productive use</span>
           </div>
         </div>
       </div>
@@ -573,10 +679,14 @@
 <section class="skills" id="skills">
   <div class="section-inner">
     <span class="section-label">Skills &amp; Stack</span>
-    <h2 class="section-title">Werkzeugkasten.</h2>
-    <p class="section-subtitle">Was ich täglich nutze und worin ich mich aktiv vertiefe.</p>
+    <h2 class="section-title">
+      <span data-lang="de">Werkzeugkasten.</span><span data-lang="en">Toolbox.</span>
+    </h2>
+    <p class="section-subtitle" data-lang="de">Was ich täglich nutze und worin ich mich aktiv vertiefe.</p>
+    <p class="section-subtitle" data-lang="en">What I use daily and actively explore in depth.</p>
 
     <div class="skills-grid">
+
       <div class="skill-group">
         <h3>AI &amp; LLMs</h3>
         <ul class="skill-list">
@@ -589,34 +699,64 @@
       </div>
 
       <div class="skill-group">
-        <h3>Change Management (in Anwendung)</h3>
+        <h3>
+          <span data-lang="de">Office &amp; Produktivität</span><span data-lang="en">Office &amp; Productivity</span>
+        </h3>
         <ul class="skill-list">
-          <li>SAP S/3 → S/4HANA</li>
-          <li>Stakeholder-Kommunikation</li>
-          <li>Schulungskonzeption</li>
-          <li>Prozessdokumentation</li>
-          <li>Prompt Library Design</li>
+          <li>MS Office 365 (Expert)</li>
+          <li>ClickUp</li>
+          <li>Jira</li>
+          <li>SAP WalkMe</li>
         </ul>
       </div>
 
       <div class="skill-group">
-        <h3>Technologie</h3>
+        <h3>
+          <span data-lang="de">Programmierung</span><span data-lang="en">Programming</span>
+        </h3>
         <ul class="skill-list">
           <li>Python</li>
+          <li>Java (Intermediate)</li>
+          <li>C# / C++ (Basic)</li>
           <li>Git &amp; GitHub</li>
           <li>Docker / Self-Hosting</li>
+        </ul>
+      </div>
+
+      <div class="skill-group">
+        <h3>AI &amp; Analytics</h3>
+        <ul class="skill-list">
+          <li>Prompt Engineering</li>
+          <li>Google Analytics</li>
+          <li>f4analyse &amp; f4transkript</li>
           <li>Paperless-ngx</li>
           <li>Obsidian</li>
         </ul>
       </div>
 
       <div class="skill-group">
-        <h3>Sprachen</h3>
+        <h3>
+          <span data-lang="de">Change Management (in Anwendung)</span><span data-lang="en">Change Management (in practice)</span>
+        </h3>
         <ul class="skill-list">
-          <li>Deutsch (Muttersprache)</li>
-          <li>Englisch (sehr gut)</li>
+          <li>SAP S/3 → S/4HANA</li>
+          <li><span data-lang="de">Stakeholder-Kommunikation</span><span data-lang="en">Stakeholder Communication</span></li>
+          <li><span data-lang="de">Schulungskonzeption</span><span data-lang="en">Training Concept Design</span></li>
+          <li><span data-lang="de">Prozessdokumentation</span><span data-lang="en">Process Documentation</span></li>
+          <li>Prompt Library Design</li>
         </ul>
       </div>
+
+      <div class="skill-group">
+        <h3>
+          <span data-lang="de">Sprachen</span><span data-lang="en">Languages</span>
+        </h3>
+        <ul class="skill-list">
+          <li><span data-lang="de">Deutsch (Muttersprache)</span><span data-lang="en">German (Native)</span></li>
+          <li><span data-lang="de">Englisch (Advanced, B2/C1)</span><span data-lang="en">English (Advanced, B2/C1)</span></li>
+        </ul>
+      </div>
+
     </div>
   </div>
 </section>
@@ -624,10 +764,17 @@
 <!-- CONTACT -->
 <section class="contact" id="contact">
   <div class="section-inner">
-    <span class="section-label">Kontakt</span>
-    <h2 class="section-title">Lass uns reden.</h2>
-    <p class="section-subtitle">
+    <span class="section-label">
+      <span data-lang="de">Kontakt</span><span data-lang="en">Contact</span>
+    </span>
+    <h2 class="section-title">
+      <span data-lang="de">Lass uns reden.</span><span data-lang="en">Let's talk.</span>
+    </h2>
+    <p class="section-subtitle" data-lang="de">
       Du arbeitest an spannenden AI-Themen, hast Fragen zu meinen Projekten oder einfach Lust auf einen Austausch? Schreib mir gerne.
+    </p>
+    <p class="section-subtitle" data-lang="en">
+      You're working on exciting AI topics, have questions about my projects, or simply want to connect? Feel free to reach out.
     </p>
 
     <div class="contact-links">
@@ -657,8 +804,25 @@
 
 <!-- FOOTER -->
 <footer>
-  <p>© 2026 Florian Schorb &nbsp;·&nbsp; Gebaut mit HTML &amp; CSS &nbsp;·&nbsp; Keine Tracker</p>
+  <p>
+    <span data-lang="de">© 2026 Florian Schorb &nbsp;·&nbsp; Gebaut mit HTML &amp; CSS &nbsp;·&nbsp; Keine Tracker</span>
+    <span data-lang="en">© 2026 Florian Schorb &nbsp;·&nbsp; Built with HTML &amp; CSS &nbsp;·&nbsp; No trackers</span>
+  </p>
 </footer>
+
+<script>
+  function setLang(lang) {
+    document.documentElement.lang = lang;
+    localStorage.setItem('floucs-lang', lang);
+    document.getElementById('btn-de').classList.toggle('active', lang === 'de');
+    document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+  }
+
+  (function () {
+    var saved = localStorage.getItem('floucs-lang') || 'de';
+    setLang(saved);
+  })();
+</script>
 
 </body>
 </html>
