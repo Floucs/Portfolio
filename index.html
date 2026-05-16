@@ -358,7 +358,7 @@
 
     .skills-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(2, 1fr);
       gap: 1.25rem;
       margin-top: 3rem;
     }
@@ -442,10 +442,6 @@
     footer p { font-size: 0.8125rem; color: var(--gray-400); }
 
     /* ── RESPONSIVE ──────────────────────────────────── */
-    @media (max-width: 768px) {
-      .skills-grid { grid-template-columns: repeat(2, 1fr); }
-    }
-
     @media (max-width: 640px) {
       nav { padding: 0 1rem; }
       .nav-links { gap: 1.25rem; }
@@ -699,51 +695,25 @@
       </div>
 
       <div class="skill-group">
-        <h3>
-          <span data-lang="de">Office &amp; Produktivität</span><span data-lang="en">Office &amp; Productivity</span>
-        </h3>
-        <ul class="skill-list">
-          <li>MS Office 365 (Expert)</li>
-          <li>ClickUp</li>
-          <li>Jira</li>
-          <li>SAP WalkMe</li>
-        </ul>
-      </div>
-
-      <div class="skill-group">
-        <h3>
-          <span data-lang="de">Programmierung</span><span data-lang="en">Programming</span>
-        </h3>
+        <h3>Tech &amp; Tools</h3>
         <ul class="skill-list">
           <li>Python</li>
           <li>Java (Intermediate)</li>
-          <li>C# / C++ (Basic)</li>
+          <li><span data-lang="de">C# / C++ (Grundkenntnisse)</span><span data-lang="en">C# / C++ (Basic)</span></li>
           <li>Git &amp; GitHub</li>
           <li>Docker / Self-Hosting</li>
+          <li>Paperless-ngx, Obsidian</li>
         </ul>
       </div>
 
       <div class="skill-group">
-        <h3>AI &amp; Analytics</h3>
+        <h3>Business &amp; Office</h3>
         <ul class="skill-list">
-          <li>Prompt Engineering</li>
+          <li>MS Office 365 (Expert)</li>
+          <li>ClickUp / Jira</li>
+          <li>SAP WalkMe</li>
           <li>Google Analytics</li>
-          <li>f4analyse &amp; f4transkript</li>
-          <li>Paperless-ngx</li>
-          <li>Obsidian</li>
-        </ul>
-      </div>
-
-      <div class="skill-group">
-        <h3>
-          <span data-lang="de">Change Management (in Anwendung)</span><span data-lang="en">Change Management (in practice)</span>
-        </h3>
-        <ul class="skill-list">
-          <li>SAP S/3 → S/4HANA</li>
-          <li><span data-lang="de">Stakeholder-Kommunikation</span><span data-lang="en">Stakeholder Communication</span></li>
-          <li><span data-lang="de">Schulungskonzeption</span><span data-lang="en">Training Concept Design</span></li>
-          <li><span data-lang="de">Prozessdokumentation</span><span data-lang="en">Process Documentation</span></li>
-          <li>Prompt Library Design</li>
+          <li>f4analyse / f4transkript</li>
         </ul>
       </div>
 
