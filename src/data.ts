@@ -6,8 +6,8 @@ export const siteData = {
     tagline: "AI meets Organization.",
     description: "Fokus auf Artificial Intelligence und praktische AI-Implementierung. Ich verbinde strategisches Produktmanagement mit tiefer technologischer Expertise.",
     enDescription: "Focus on Artificial Intelligence and practical AI implementation. I bridge strategic product management with deep technological expertise.",
-    about: "Ich verbringe meine Zeit damit, neue AI-Tools auszuprobieren, lokale Setups zu bauen und zu verstehen, wie sich generative KI in echte Arbeitsabläufe integrieren lässt — nicht nur als Demo, sondern als Lösung mit Substanz. Parallel sammle ich erste Praxiserfahrung in einer SAP-Migration im Bereich Change Management.",
-    enAbout: "I spend my time trying out new AI tools, building local setups, and understanding how generative AI can be integrated into real workflows — not just as a demo, but as a solution with substance. At the same time, I am gaining my first practical experience in an SAP migration in the area of Change Management."
+    about: "Ich entwickle und erprobe AI-gestützte Workflows und lokale Setups mit dem Ziel, generative KI nicht als Demo, sondern als produktiv nutzbare Lösung in echte Arbeitsabläufe zu bringen. Parallel sammle ich Praxiserfahrung im Change Management einer SAP-S/4HANA-Migration.",
+    enAbout: "I design and test AI-driven workflows and local setups with one goal: bringing generative AI into real workflows not as a demo, but as a solution that holds up in production. In parallel, I am gaining hands-on experience in change management within an SAP S/4HANA migration."
   },
   experience: [
     {
@@ -109,8 +109,8 @@ export const siteData = {
     {
       title: "Akademischer Hintergrund",
       enTitle: "Academic Background",
-      description: "Verbindung aus B.Sc. IT-Produktmanagement (HFU) und dualem M.Sc. Wirtschaftsingenieurwesen (DHBW).",
-      enDescription: "Combining a B.Sc. in IT Product Management (HFU) and cooperative M.Sc. in Industrial Engineering (DHBW).",
+      description: "Verbindung aus B.Sc. IT-Produktmanagement (HFU) und M.Sc. Digital Business & Management (Albstadt-Sigmaringen).",
+      enDescription: "Combining a B.Sc. in IT Product Management (HFU) and an M.Sc. in Digital Business & Management (Albstadt-Sigmaringen).",
       icon: GraduationCap,
     },
     {
@@ -142,7 +142,7 @@ export const siteData = {
       description: "Eigenes Python-Tool (CLI & lokales Webinterface), das Markdown-Vaults analysiert und semantisch verwandte Notizen über Embeddings (nomic-embed-text) verknüpft. Nutzt lokales ChromaDB zur Vektorsuche und ein LLM zur Themenextraktion. Komplett offline lauffähig. Beschleunigt das Auffinden von Querverbindungen in großen Wissensdatenbanken (Zettelkasten).",
       enDescription: "Custom Python tool (CLI & local web interface) that analyzes Markdown vaults and links semantically related notes via embeddings (nomic-embed-text). Uses local ChromaDB for vector search and an LLM for topic extraction. Fully offline capable. Accelerates finding cross-connections in large knowledge bases (Zettelkasten).",
       tags: ["Python", "Streamlit", "ChromaDB", "Ollama", "Embeddings"],
-      status: "In Progress",
+      status: "In Arbeit",
       enStatus: "In Progress",
       icon: Link,
       image: "/images/vault_linker.png"
@@ -165,7 +165,7 @@ export const siteData = {
       description: "Vollständig lokale Dokumentenverarbeitung mit Paperless-ngx und Paperless-AI. Klassifizierung auf Deutsch und Englisch über ein lokal laufendes Open-Source Language Model (Qwen) — ohne Cloud, ohne Datenweitergabe. Vollständig DSGVO-konform. Zeigt wie AI-gestützte Dokumentenverarbeitung ohne Vendor-Abhängigkeit funktioniert.",
       enDescription: "Fully local document processing with Paperless-ngx and Paperless-AI. Classification in German and English via a locally running open-source language model (Qwen) — no cloud, no data sharing. Fully GDPR-compliant. Demonstrates how AI-powered document processing works without vendor dependency.",
       tags: ["Paperless-ngx", "Ollama", "Qwen Local LLM", "Docker", "Self-hosted"],
-      status: "Dokumentation coming soon",
+      status: "Dokumentation folgt",
       enStatus: "Documentation coming soon",
       icon: FileText,
       image: "/images/local_classification.png"
