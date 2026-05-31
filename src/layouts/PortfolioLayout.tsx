@@ -180,23 +180,10 @@ export default function PortfolioLayout({ language, theme }: { language: Languag
             </div>
           </div>
 
-          {/* Hero profile photo */}
+          {/* Hero character illustration */}
           <div className="lg:col-span-5 flex justify-center">
-            <div className="relative">
-              <div className={`absolute inset-0 rounded-full blur-2xl scale-110 opacity-60 ${
-                isLight ? 'bg-blue-300/40' : 'bg-blue-500/20'
-              }`} />
-              <div className={`relative w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 ${
-                isLight
-                  ? 'border-blue-500/60 shadow-[0_0_40px_rgba(37,99,235,0.15)]'
-                  : 'border-cyan-400/40 shadow-[0_0_40px_rgba(8,182,212,0.2)]'
-              }`}>
-                <img
-                  src={`${import.meta.env.BASE_URL}images/avatar.png`}
-                  alt="Florian Schorb"
-                  className="w-full h-full object-cover object-top"
-                />
-              </div>
+            <div className="group cursor-pointer">
+              {renderHeroAvatar()}
             </div>
           </div>
 
