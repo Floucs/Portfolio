@@ -31,48 +31,63 @@ export default function PortfolioLayout({ language, theme }: { language: Languag
   };
 
   // SVG Avatars for pixel-perfect display without broken placeholders
-  const renderHeroAvatar = () => (
-    <div className="relative w-72 h-72 md:w-80 md:h-80 mx-auto">
-      {/* Outer spinning glowing gradient */}
-      <div className={`absolute inset-0 rounded-full opacity-60 blur-xl animate-pulse ${
-        isLight ? 'bg-gradient-to-tr from-blue-400 via-indigo-400 to-blue-300' : 'bg-gradient-to-tr from-cyan-500 via-blue-600 to-indigo-500'
-      }`} />
-      
-      {/* Wave Blob container */}
-      <div className={`absolute inset-2 border-4 rounded-[40%_60%_70%_30%_/_40%_50%_60%_50%] overflow-hidden shadow-2xl relative flex items-center justify-center group-hover:scale-105 transition-transform duration-500 ${
-        isLight 
-          ? 'bg-gradient-to-br from-white to-blue-50/50 border-blue-500/80 shadow-[0_10px_30px_rgba(37,99,235,0.08)]' 
-          : 'bg-gradient-to-br from-[#0B1527] to-[#1E293B] border-cyan-400/80'
-      }`}>
-        <svg viewBox="0 0 200 200" className={`w-[85%] h-[85%] ${isLight ? 'text-blue-600' : 'text-cyan-400'}`} fill="currentColor">
-          {/* Beanie Head */}
-          <circle cx="100" cy="115" r="42" fill={isLight ? "#f1f5f9" : "#1e293b"} stroke={isLight ? "#2563eb" : "#08b6d4"} strokeWidth="4" />
-          <path d="M60,105 C60,50 140,50 140,105 Z" fill={isLight ? "#2563eb" : "#08b6d4"} />
-          {/* Beanie Pompon */}
-          <circle cx="100" cy="46" r="10" fill={isLight ? "#1e293b" : "#ffffff"} />
-          {/* Beanie Rim */}
-          <rect x="56" y="94" width="88" height="12" rx="6" fill={isLight ? "#1e293b" : "#ffffff"} />
-          {/* Cute Face details */}
-          <circle cx="83" cy="120" r="14" fill="none" stroke={isLight ? "#1e293b" : "#ffffff"} strokeWidth="3" />
-          <circle cx="117" cy="120" r="14" fill="none" stroke={isLight ? "#1e293b" : "#ffffff"} strokeWidth="3" />
-          <line x1="97" y1="120" x2="103" y2="120" stroke={isLight ? "#1e293b" : "#ffffff"} strokeWidth="3" />
-          {/* Eyes */}
-          <circle cx="83" cy="120" r="3" fill={isLight ? "#2563eb" : "#08b6d4"} />
-          <circle cx="117" cy="120" r="3" fill={isLight ? "#2563eb" : "#08b6d4"} />
-          {/* Blushing */}
-          <circle cx="72" cy="128" r="4" fill="#f43f5e" opacity="0.6" />
-          <circle cx="128" cy="128" r="4" fill="#f43f5e" opacity="0.6" />
-          {/* Smiling Mouth */}
-          <path d="M92,132 Q100,140 108,132" fill="none" stroke={isLight ? "#1e293b" : "#ffffff"} strokeWidth="3" strokeLinecap="round" />
-          {/* Little hands holding book */}
-          <rect x="75" y="152" width="50" height="30" rx="4" fill={isLight ? "#f8fafc" : "#1e293b"} stroke={isLight ? "#1e293b" : "#ffffff"} strokeWidth="3" />
-          <path d="M85,152 L85,182" stroke={isLight ? "#1e293b" : "#ffffff"} strokeWidth="2" />
-          {/* Book Details */}
-          <path d="M80,162 L90,162 M80,170 L90,170 M110,162 L120,162 M110,170 L120,170" stroke={isLight ? "#2563eb" : "#08b6d4"} strokeWidth="2" strokeLinecap="round" />
-        </svg>
+  const renderHeroAvatar = () => {
+    const c = isLight ? '#2563eb' : '#08b6d4';
+    const dim = isLight ? '#93c5fd' : '#164e63';
+    const bg = isLight ? '#eff6ff' : '#0b1527';
+    const nodes = [
+      { cx: 100, cy: 100, r: 8, delay: '0s' },
+      { cx: 40,  cy: 60,  r: 5, delay: '0.4s' },
+      { cx: 160, cy: 55,  r: 5, delay: '0.8s' },
+      { cx: 165, cy: 145, r: 5, delay: '0.2s' },
+      { cx: 35,  cy: 150, r: 5, delay: '1.0s' },
+      { cx: 100, cy: 20,  r: 4, delay: '0.6s' },
+      { cx: 180, cy: 100, r: 4, delay: '1.2s' },
+      { cx: 20,  cy: 100, r: 4, delay: '0.9s' },
+      { cx: 100, cy: 180, r: 4, delay: '0.3s' },
+      { cx: 68,  cy: 38,  r: 3, delay: '1.4s' },
+      { cx: 132, cy: 38,  r: 3, delay: '0.7s' },
+      { cx: 148, cy: 170, r: 3, delay: '1.1s' },
+      { cx: 52,  cy: 170, r: 3, delay: '0.5s' },
+    ];
+    const edges = [
+      [0,1],[0,2],[0,3],[0,4],
+      [1,5],[2,5],[2,6],[3,6],[3,8],[4,8],[4,7],
+      [1,9],[2,10],[3,11],[4,12],[1,7],[2,7],
+    ];
+    return (
+      <div className="relative w-72 h-72 md:w-80 md:h-80 mx-auto">
+        <div className={`absolute inset-0 rounded-full blur-2xl opacity-40 animate-pulse`}
+          style={{ background: isLight ? 'radial-gradient(circle, #93c5fd, #e0f2fe)' : 'radial-gradient(circle, #0e7490, #0b1527)' }} />
+        <div className="absolute inset-2 rounded-full overflow-hidden flex items-center justify-center"
+          style={{ background: bg, border: `1.5px solid ${dim}` }}>
+          <svg viewBox="0 0 200 200" className="w-full h-full">
+            {edges.map(([a, b], i) => (
+              <line key={i}
+                x1={nodes[a].cx} y1={nodes[a].cy}
+                x2={nodes[b].cx} y2={nodes[b].cy}
+                stroke={dim} strokeWidth="1.2" strokeDasharray="4 3"
+                opacity="0.7"
+              />
+            ))}
+            {nodes.map((n, i) => (
+              <g key={i}>
+                <circle cx={n.cx} cy={n.cy} r={n.r * 3} fill={c} opacity="0.08">
+                  <animate attributeName="r" values={`${n.r*2};${n.r*4};${n.r*2}`} dur="2.5s" begin={n.delay} repeatCount="indefinite" />
+                  <animate attributeName="opacity" values="0.08;0.18;0.08" dur="2.5s" begin={n.delay} repeatCount="indefinite" />
+                </circle>
+                <circle cx={n.cx} cy={n.cy} r={n.r} fill={c} opacity="0.9" />
+              </g>
+            ))}
+            <circle cx="100" cy="100" r="8" fill={c}>
+              <animate attributeName="r" values="8;11;8" dur="2s" repeatCount="indefinite" />
+            </circle>
+            <text x="100" y="104" textAnchor="middle" fontSize="7" fill={bg} fontFamily="monospace" fontWeight="bold">AI</text>
+          </svg>
+        </div>
       </div>
-    </div>
-  );
+    );
+  };
 
   const renderGradAvatar = () => (
     <div className="relative w-64 h-64 mx-auto">
