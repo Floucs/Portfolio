@@ -6,8 +6,8 @@ export const siteData = {
     tagline: "AI meets Organization.",
     description: "Fokus auf Artificial Intelligence und praktische AI-Implementierung. Ich verbinde strategisches Produktmanagement mit tiefer technologischer Expertise.",
     enDescription: "Focus on Artificial Intelligence and practical AI implementation. I bridge strategic product management with deep technological expertise.",
-    about: "Ich entwickle und erprobe AI-gestützte Workflows und lokale Setups mit dem Ziel, generative KI nicht als Demo, sondern als produktiv nutzbare Lösung in echte Arbeitsabläufe zu bringen. Parallel sammle ich Praxiserfahrung im Change Management einer SAP-S/4HANA-Migration.",
-    enAbout: "I design and test AI-driven workflows and local setups with one goal: bringing generative AI into real workflows not as a demo, but as a solution that holds up in production. In parallel, I am gaining hands-on experience in change management within an SAP S/4HANA migration."
+    about: "Ich verbringe meine Zeit damit, neue AI-Tools auszuprobieren, lokale Setups zu bauen und zu verstehen, wie sich generative KI in echte Arbeitsabläufe integrieren lässt — nicht nur als Demo, sondern als Lösung mit Substanz. Parallel sammle ich erste Praxiserfahrung in einer SAP-Migration im Bereich Change Management.",
+    enAbout: "I spend my time trying out new AI tools, building local setups, and understanding how generative AI can be integrated into real workflows — not just as a demo, but as a solution with substance. At the same time, I am gaining my first practical experience in an SAP migration in the area of Change Management."
   },
   experience: [
     {
