@@ -15,7 +15,7 @@ export default function Hero({ styleVariant, language }: { styleVariant: StyleVa
   };
 
   return (
-    <section id="about" className="pt-48 pb-20 px-6 max-w-5xl mx-auto flex flex-col items-center sm:items-start text-center sm:text-left min-h-[80vh] justify-center relative z-10">
+    <section id="about" className="pt-48 pb-20 px-6 max-w-5xl mx-auto flex flex-col sm:flex-row items-center sm:items-start text-center sm:text-left min-h-[80vh] justify-center relative z-10 gap-12">
       <motion.div
         initial={{ opacity: 0, filter: "blur(12px)", y: 40 }}
         animate={{ opacity: 1, filter: "blur(0px)", y: 0 }}
@@ -86,6 +86,24 @@ export default function Hero({ styleVariant, language }: { styleVariant: StyleVa
              </svg>
            </a>
         </motion.div>
+      </motion.div>
+
+      <motion.div
+        initial={{ opacity: 0, scale: 0.85 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ delay: 0.5, duration: 1, ease: [0.16, 1, 0.3, 1] }}
+        className="shrink-0 flex items-center justify-center sm:justify-end w-full sm:w-auto"
+      >
+        <div className="relative">
+          <div className="absolute inset-0 rounded-full bg-blue-500/20 blur-2xl scale-110" />
+          <div className="relative w-52 h-52 sm:w-64 sm:h-64 rounded-full overflow-hidden border-2 border-blue-500/30 shadow-[0_0_40px_rgba(59,130,246,0.25)]">
+            <img
+              src="/Portfolio/images/avatar.png"
+              alt="Florian Schorb"
+              className="w-full h-full object-cover object-top"
+            />
+          </div>
+        </div>
       </motion.div>
     </section>
   );
