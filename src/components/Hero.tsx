@@ -98,7 +98,7 @@ export default function Hero({ styleVariant, language }: { styleVariant: StyleVa
           <div className="absolute inset-0 rounded-full bg-blue-500/20 blur-2xl scale-110" />
           <div className="relative w-52 h-52 sm:w-64 sm:h-64 rounded-full overflow-hidden border-2 border-blue-500/30 shadow-[0_0_40px_rgba(59,130,246,0.25)]">
             <img
-              src="/Portfolio/images/avatar.png"
+              src={`${import.meta.env.BASE_URL}images/avatar.png`}
               alt="Florian Schorb"
               className="w-full h-full object-cover object-top"
             />
