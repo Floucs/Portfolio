@@ -129,10 +129,10 @@ export default function PortfolioLayout({ language, theme }: { language: Languag
       
       {/* SECTION 1: HERO / ABOUT ME */}
       <section id="about" className="pt-24 pb-20 px-6 max-w-6xl mx-auto min-h-[90vh] flex flex-col justify-center relative">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-          
+        <div className="grid grid-cols-1 gap-12 items-center">
+
           {/* Hero text */}
-          <div className="lg:col-span-7 space-y-8 text-center lg:text-left">
+          <div className="space-y-8 text-center lg:text-left max-w-3xl">
             <div className={`inline-flex items-center gap-2 px-4 py-1.5 rounded-full font-mono text-xs ${
               isLight 
                 ? 'bg-blue-50 border border-blue-200 text-blue-600' 
@@ -195,12 +195,6 @@ export default function PortfolioLayout({ language, theme }: { language: Languag
             </div>
           </div>
 
-          {/* Hero character illustration */}
-          <div className="lg:col-span-5 flex justify-center">
-            <div className="group cursor-pointer">
-              {renderHeroAvatar()}
-            </div>
-          </div>
 
         </div>
       </section>
